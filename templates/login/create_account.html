@@ -1,1 +1,6 @@
 {% include 'login/layouts/partials/header.html' %}
+<form action="{% url 'goal' %}" method='POST'>
+    {% csrf_token %}
+    {{ user_creation_form }}
+    <input type="submit" value='Crear cuenta'>
+</form>
