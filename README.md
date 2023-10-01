@@ -36,6 +36,7 @@ USER {
     IntegerField weight
     CharField country
     CharField language
+    CharField password
 }
 EXERCISE {
     IntegerField id PK
@@ -66,5 +67,4 @@ EXERCISE }|--|| TypeOfExercise: has
 REGISTER }|--|| USER:has
 REGISTER }|--|| EXERCISE:has
 COUNTRY ||--|{ USER:live
-
 ```

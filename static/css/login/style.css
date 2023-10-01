@@ -1,9 +1,26 @@
 
 * {
     padding: 0;
-    margin: 0;
-    
+    margin: 0;   
 }
-h1 {
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.heading_title {
+    text-align: center;
+    color: white;
+    background-color: green;
+}
+#login_div {
+    margin: auto;
+    padding: auto;
+    background-color: aqua;
+}
+
+footer  {
+    
     background-color: red;
 }

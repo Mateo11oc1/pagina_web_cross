@@ -1,1 +1,28 @@
-{% extends './layouts/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login/style.css'%}">
+    <title>CrossPulse</title>
+
+</head>
+<body>
+
+    {% include 'login/layouts/partials/header.html' %}
+
+    <main>
+        
+        <div id="login_div">
+            <h1>Login</h1>
+            {% include 'login/forms/login_form.html' %}
+            {% include 'login/forms/create_form.html' %}
+            
+        </div>
+        
+    </main>
+
+    {% include 'login/layouts/partials/footer.html' %}
+</body>
+</html>
