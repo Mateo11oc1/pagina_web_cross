@@ -1,6 +1,7 @@
 from django.db import models
 from register.models import Country
 from django.contrib.auth.models import AbstractUser
+
 # Create your models here.
 class User(AbstractUser):
     
@@ -16,10 +17,6 @@ class User(AbstractUser):
     height = models.IntegerField(null=True, blank=True)
     weight = models.IntegerField(null=True, blank=True)
 
-    def save(self, *args, **kwargs):
-        if self.password:
-            self.set_password(self.password)
-        super().save(*args, **kwargs)
         
     def __str__(self):
         return self.first_name

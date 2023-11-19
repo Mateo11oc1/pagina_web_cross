@@ -3,6 +3,7 @@ from .forms import MyUserCreationForm
 from django.http import HttpResponse
 from .models import User
 from register.models import Country
+from django.db import IntegrityError
 # Create your views here.
 def login(request):
     return render(request, 'login/index.html', {})
@@ -22,6 +23,7 @@ def goal(request):
     if request.method == 'POST':
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
+        
             #Aqui las acciones si los datos son correctos
             country = Country(code='500', name='Chile')
             country.save()
@@ -38,6 +40,11 @@ def goal(request):
             
         else:
             #Aqui las acciones si los datos son incorrectos
+            try:
+                pass
+            except IntegrityError as e:
+                context = {'user_creation_form':form}
+                return render(request, 'login/create_account.html', context)    
             context = {'user_creation_form':form}
             return render(request, 'login/create_account.html', context)
     
