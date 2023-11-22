@@ -29,10 +29,11 @@ def goal(request):
                 username = request.POST['username']
                 first_name = request.POST['first_name']
                 email = request.POST['email']
+                phone = request.POST['phone']
+                password = request.POST.get('password1')
                 gender = Gender.objects.get(id=request.POST['gender'])
                 country = Country.objects.get(code=request.POST['country'])
-                password = request.POST.get('password1')
-                user = User(dni=dni, username=username, first_name=first_name, email=email, gender=gender, country=country)
+                user = User(dni=dni, username=username, first_name=first_name, email=email, gender=gender, country=country, phone=phone)
                 user.set_password(password)
                 user.save()
                 return render(request, 'login/index.html', {'user_creation_confirmation': 'Usuario creado exitosamente'})
