@@ -1,4 +1,8 @@
 {% include 'login/layouts/partials/header.html' %}
+<div id="unique_constraint_violation">
+    {{ unicity_error_detail }}
+</div>
+
 <form action="{% url 'goal' %}" method='POST'>
     {% csrf_token %}
     {{ user_creation_form }}
