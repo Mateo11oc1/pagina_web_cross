@@ -13,7 +13,7 @@ def new_account(request):
     context = {'user_creation_form':form}
     return render(request, 'login/create_account.html', context)
 
-def goal(request):
+def new_account_succesfull(request):
 
     if request.method == 'GET':
         form = MyUserCreationForm()
@@ -23,27 +23,20 @@ def goal(request):
     if request.method == 'POST':
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
-            try:
-                #Aqui las acciones si los datos son correctos
-                dni = request.POST['dni']
-                username = request.POST['username']
-                first_name = request.POST['first_name']
-                email = request.POST['email']
-                phone = request.POST['phone']
-                password = request.POST.get('password1')
-                gender = Gender.objects.get(id=request.POST['gender'])
-                country = Country.objects.get(code=request.POST['country'])
-                user = User(dni=dni, username=username, first_name=first_name, email=email, gender=gender, country=country, phone=phone)
-                user.set_password(password)
-                user.save()
-                return render(request, 'login/index.html', {'user_creation_confirmation': 'Usuario creado exitosamente'})
-            except IntegrityError as e:
-                print(e)
-                unicity_error_detail = str(e).capitalize()
-                return render(request, 'login/create_account.html', {'unicity_error_detail': unicity_error_detail ,'user_creation_form': form})
-
+            dni = request.POST['dni']
+            username = request.POST['username']
+            first_name = request.POST['first_name']
+            email = request.POST['email']
+            phone = request.POST['phone']
+            password = request.POST.get('password1')
+            gender = Gender.objects.get(id=request.POST['gender'])
+            country = Country.objects.get(code=request.POST['country'])
+            user = User(dni=dni, username=username, first_name=first_name, email=email, gender=gender, country=country, phone=phone)
+            user.set_password(password)
+            user.save()
+            return render(request, 'login/index.html', {'user_creation_confirmation': 'Usuario creado exitosamente'})
         else:
             #Aqui las acciones si los datos son incorrectos
-            return render(request, 'login/create_account.html', {'unicity_error': '', 'user_creation_form': form})
+            return render(request, 'login/create_account.html', {'user_creation_form': form})
 
 

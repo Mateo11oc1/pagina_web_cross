@@ -23,7 +23,7 @@ class User(AbstractUser):
         unique=True, 
         null=False, 
         blank=False, 
-        verbose_name='Usuario')
+        verbose_name='Nombre de usuario')
     
     first_name = models.CharField(
         max_length=20, 

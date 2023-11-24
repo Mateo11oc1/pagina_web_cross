@@ -1,9 +1,5 @@
 {% include 'login/layouts/partials/header.html' %}
-<div id="unique_constraint_violation">
-    {{ unicity_error_detail }}
-</div>
-
-<form action="{% url 'goal' %}" method='POST'>
+<form action="{% url 'new_account_succesfull' %}" method='POST'>
     {% csrf_token %}
     {{ user_creation_form }}
     <input type="submit" value='Crear cuenta'>
